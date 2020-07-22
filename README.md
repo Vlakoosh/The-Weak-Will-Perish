@@ -1,2 +1,2 @@
 # The-Weak-Will-Perish
-description
+Rogue-like, made in godot. now giddout it's not done yet you fool.
