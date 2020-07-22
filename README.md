@@ -1,2 +1,2 @@
 # The-Weak-Will-Perish
-description
+Roguelike, in godot, not even alpha. gittout now.
