@@ -7,13 +7,12 @@ var MAX_SPEED = 100
 var FRICTION = 20
 var AIR_RESISTANCE = 0.75
 
-#The force used in a jump?
+#How high up you can jump
 var JUMP_FORCE = 175
+
 #Havent I seen this in ItemDB?
 var jump_count = 0
 var jumps_allowed = 2
-#The current state of the player
-var state = "move"
 #The motion of the player, duh
 var motion = Vector2.ZERO
 var x_input = 0
@@ -32,6 +31,9 @@ onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(delta):
     
+    if is_on_floor():
+        jump_count = 0
+        
     _handle_input()
     
     
@@ -40,16 +42,33 @@ func _handle_input():
     x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
     #fixed a bug allowing the player to attck backwards if they slid off collision
     
-        
-func _gravity_and_movement(delta):
-        
+func _apply_gravity(delta):
     #Determine current up/down gravirt junk
     motion.y += ItemDb.gravity * delta * TARGET_FPS
+        
+func _apply_movement(delta):
     #M o v e m e n t, finally
+    
+    if is_on_floor():
+        if x_input == 0:
+            motion.x = lerp(motion.x, 0, FRICTION * delta)
+        else:
+            if x_input == 0:
+                motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
+            
+            
+    #smooth motion
+    motion.x += x_input * ACCELERATION * delta * TARGET_FPS
+    #Place a maximum on x movement
+    motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+    #Determine the direction c h a d should face
+    sprite.flip_h = x_direction < 0
+    
     motion = move_and_slide(motion, Vector2.UP)
 
 
-    
+func attack_animation_finished():
+    pass
 
 #added this, smooth transition too. You never notice it!
 func _on_Next_Room_nextLevel():

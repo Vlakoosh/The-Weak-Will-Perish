@@ -38,7 +38,7 @@ func _exit_state(old_state,new_state):
     
 # Handles the changes in state
 func set_state(new_state):
-    previous_state = new_state
+    previous_state = state
     state = new_state
     
     if previous_state != null:
