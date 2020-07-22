@@ -10,17 +10,18 @@ var speed = 50
 onready var obj = get_parent().get_parent().get_parent().get_node("Player")
 
 func _physics_process(delta):
-	#Point towards the player
-	var dir = (obj.global_position - global_position).normalized()
-	#Only move when on screen
-	if VisNotif.is_on_screen():
-		move_and_collide(dir * speed * delta)
-	#Die
-	if stats.health <= 0:
-		queue_free()
-
+    #Point towards the player
+    var dir = (obj.global_position - global_position).normalized()
+    #Only move when on screen
+    if VisNotif.is_on_screen():
+        move_and_collide(dir * speed * delta)
+    #Die
+    if stats.health <= 0:
+        queue_free()
+        
 
 #Koosh why
 func _on_HurtBox_area_entered(area):
-	queue_free()
-	stats.health - ItemDb.player_damage
+    #queue_free()
+    
+    stats.health - ItemDb.player_damage

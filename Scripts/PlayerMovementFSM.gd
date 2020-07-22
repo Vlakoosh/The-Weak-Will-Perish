@@ -8,6 +8,11 @@ func _ready():
     add_state("jump")
     add_state("fall")
     call_deferred("set_state",states.idle)
+    
+    
+    parent.get_node("AnimationPlayer").connect("animation_finished",self,"_on_animation_finished")
+
+
 
 # Virtual method, here goes everything that should execute in each different state
 func _state_logic(delta):
@@ -70,7 +75,7 @@ func _get_transition(delta):
     
 # Virtual method, if you need something to execute when a certain state is entered
 func _enter_state(new_state,old_state):
-    print("entered "+ str(new_state)+ " from " + str(old_state) )
+    #print("entered "+ str(new_state)+ " from " + str(old_state) )
     match state:
         states.idle:
             parent.animationPlayer.play("idle")
@@ -78,7 +83,7 @@ func _enter_state(new_state,old_state):
             parent.animationPlayer.play("run")
         states.jump:
             parent.jump_count += 1
-            print("jump")
+            
             parent.motion.y =- parent.JUMP_FORCE
             parent.animationPlayer.play("jump")
         states.fall:
@@ -90,4 +95,5 @@ func _exit_state(old_state,new_state):
         states.jump:
             pass
 
-
+func _on_animation_finished( anim_name ):
+    pass#print ("animation played: " +anim_name)

@@ -23,6 +23,7 @@ var x_direction = 1
 #More efficient than calling $node every time you use it
 onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
+onready var attackAnimationPlayer = $AttackAnimationPlayer
 
 #comment this out when not testing!
 #func _ready():
@@ -40,8 +41,7 @@ func _physics_process(delta):
 func _handle_input():
     #Basic stuff for getting the l/r direction of a player. 
     x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-    #fixed a bug allowing the player to attck backwards if they slid off collision
-    
+ 
 func _apply_gravity(delta):
     #Determine current up/down gravirt junk
     motion.y += ItemDb.gravity * delta * TARGET_FPS
@@ -55,7 +55,6 @@ func _apply_movement(delta):
         else:
             if x_input == 0:
                 motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
-            
             
     #smooth motion
     motion.x += x_input * ACCELERATION * delta * TARGET_FPS
