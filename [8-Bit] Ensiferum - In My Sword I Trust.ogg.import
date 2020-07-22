@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/[8-Bit] Ensiferum - In My Sword I Trust.ogg-19a48bb9ebbe99aac96fc1a459a32213.oggstr"
+
+[deps]
+
+source_file="res://[8-Bit] Ensiferum - In My Sword I Trust.ogg"
+dest_files=[ "res://.import/[8-Bit] Ensiferum - In My Sword I Trust.ogg-19a48bb9ebbe99aac96fc1a459a32213.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Test Scene.gd" type="Script" id=2]
+[ext_resource path="res://Art/Tiles and Enviroment/Next Room.tscn" type="PackedScene" id=3]
+[ext_resource path="res://[8-Bit] Ensiferum - In My Sword I Trust.ogg" type="AudioStream" id=4]
+
+[node name="Test Scene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 120, 80 )
+current = true
+smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 43, 132 )
+collision_layer = 7
+collision_mask = 0
+
+[node name="Hitbox" parent="Player" index="6"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Next Room" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+[connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
+[connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]
+
+[editable path="Player"]
