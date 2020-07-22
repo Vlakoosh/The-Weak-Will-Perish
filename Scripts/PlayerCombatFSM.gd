@@ -4,7 +4,6 @@ var attack_finished = false
 
 func _ready():
     add_state("idle")
-    #add_state("move")
     add_state("attack")
     call_deferred("set_state",states.idle)
 
@@ -37,7 +36,8 @@ func _enter_state(new_state,old_state):
     
     match state:
         states.attack:
-            print("attacked")
+            
+            #print("attacked")
             var animation
             #If you aren't falling...
             if parent.motion.y > 0:
@@ -55,11 +55,10 @@ func _enter_state(new_state,old_state):
                 if parent.x_direction < 0:
                     animation = "attack_idle_left"
             
-            #if Input.is_action_just_pressed"ui_up"):
             parent.attackAnimationPlayer.play(animation)
             
         states.idle:
-            print("idled")
+            #print("idled")
             parent.attackAnimationPlayer.play("idle")
             
 # Virtual method, if you need something to execute when a certain state is exited
@@ -67,7 +66,6 @@ func _exit_state(old_state,new_state):
     pass
 
 func _on_animation_finished( anim_name ):
-    print ("animation played: " +anim_name)
-    print(anim_name.substr(0,6))
+    #print ("animation played: " +anim_name)
     if anim_name.substr(0,6)== "attack":
-        attack_finished = true#set_state(states.idle)
+        attack_finished = true
