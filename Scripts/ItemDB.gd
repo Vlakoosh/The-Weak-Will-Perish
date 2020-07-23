@@ -14,6 +14,9 @@ var player_damage = 1
 signal nextLevel
 #Rooms loaded. Eventually will contain every level I guess?
 var preloaded_rooms = [
+	preload("res://Rooms/Beginning.tscn"),
+	preload("res://Rooms/End.tscn"),
+	preload("res://Rooms/Boss.tscn"),
 	preload("res://Rooms/Room1.tscn"),
 	preload("res://Rooms/Room2.tscn"),
 	preload("res://Rooms/Room3.tscn")
