@@ -23,5 +23,5 @@ func _physics_process(delta):
 #Koosh why
 func _on_HurtBox_area_entered(area):
     #queue_free()
-    
-    stats.health - ItemDb.player_damage
+    if area.name=="Hitbox":
+        stats.health =- ItemDb.player_damage

@@ -34,7 +34,7 @@ script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -49,8 +49,8 @@ self_modulate = Color( 1, 1, 1, 0.266667 )
 shape = SubResource( 3 )
 
 [node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 2147483656
-collision_mask = 8
+collision_layer = 2147483652
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource( 4 )
