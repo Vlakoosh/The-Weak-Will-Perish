@@ -20,10 +20,6 @@ position = Vector2( 43, 132 )
 collision_layer = 7
 collision_mask = 0
 
-[node name="Hitbox" parent="Player" index="6"]
-collision_layer = 0
-collision_mask = 8
-
 [node name="Next Room" parent="." instance=ExtResource( 3 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -31,5 +27,3 @@ stream = ExtResource( 4 )
 autoplay = true
 [connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]
 [connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
-
-[editable path="Player"]
