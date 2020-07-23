@@ -19,5 +19,7 @@ func _physics_process(delta):
 #Koosh why
 func _on_HurtBox_area_entered(area):
 	stats.health - ItemDb.player_damage	
+	print("hit")
+	print(stats.health)
 	if stats.health <= 1:
 		queue_free()

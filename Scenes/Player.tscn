@@ -122,7 +122,7 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ false, true ]
 }
 
@@ -238,7 +238,7 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ false, true ]
 }
 
@@ -354,7 +354,7 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ false, true ]
 }
 
@@ -470,7 +470,7 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ false, true ]
 }
 
@@ -548,13 +548,14 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource( 3 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+vframes = 3
+hframes = 3
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.8
@@ -567,14 +568,6 @@ anims/idle = SubResource( 7 )
 anims/jump = SubResource( 8 )
 anims/run = SubResource( 9 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-vframes = 3
-hframes = 3
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Attacking Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = 1.195
@@ -585,29 +578,17 @@ position = Vector2( -8, 7 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 flip_h = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ChadHitIdle" type="Sprite" parent="."]
 visible = false
 position = Vector2( 12, 1 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( -13, 6 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 10 )
 disabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]

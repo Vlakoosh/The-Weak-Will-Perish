@@ -29,7 +29,7 @@ collision_mask = 8
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
-[connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
 [connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]
+[connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
 
 [editable path="Player"]
