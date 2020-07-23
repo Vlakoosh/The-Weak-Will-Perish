@@ -28,35 +28,35 @@ var preloaded_rooms = [
 const ICON_PATH = "res://Art/Items"
 #Items
 const ITEMS = {
-	"StickSword": {
-		"icon": ICON_PATH + "StickSword.png",
-		"type": "SWORD"
-	},
-	"DirtyLeatherShirt": {
-		"icon": ICON_PATH + "DirtyLeatherShirt.png",
-		"type": "ARMOR"
-	},
-	"RedFish": {
-		"icon": ICON_PATH + "RedFish.png",
-		"type": "SWORD"
-	},
-	"Greatsword": {
-		"icon": ICON_PATH + "Greatsword.png",
-		"type": "SWORD"
-	}
+    "StickSword": {
+        "icon": ICON_PATH + "StickSword.png",
+        "type": "SWORD"
+    },
+    "DirtyLeatherShirt": {
+        "icon": ICON_PATH + "DirtyLeatherShirt.png",
+        "type": "ARMOR"
+    },
+    "RedFish": {
+        "icon": ICON_PATH + "RedFish.png",
+        "type": "SWORD"
+    },
+    "Greatsword": {
+        "icon": ICON_PATH + "Greatsword.png",
+        "type": "SWORD"
+    }
 }
 #Pretty smart! Nice one, Koosh!
 
 func get_item(item_id):
-	#If the item exists in the item dict
-	if item_id in ITEMS:
-		#return it
-		return ITEMS[item_id]
-	#else,
-	else:
-		#Error.
-		return ITEMS["error"] #Wait does that even work? there is no error item.
+    #If the item exists in the item dict
+    if item_id in ITEMS:
+        #return it
+        return ITEMS[item_id]
+    #else,
+    else:
+        #Error.
+        return ITEMS["error"] #Wait does that even work? there is no error item.
 
 #lazy fuck
 func _on_Next_Room_nextLevel():
-	pass # Replace with function body.
+    pass # Replace with function body.

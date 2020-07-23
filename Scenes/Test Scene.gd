@@ -60,4 +60,4 @@ func _on_Next_Room_nextLevel():
 	delete_children(Level)
 	
 static func delete_children(node):
-	node.get_child(0).queue_free()
+    node.get_child(0).queue_free()
