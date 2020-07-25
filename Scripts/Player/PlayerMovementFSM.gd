@@ -17,13 +17,30 @@ func _ready():
 # Virtual method, here goes everything that should execute in each different state
 func _state_logic(delta):
     
+
+    parent.motion.x=0
+    if parent.x_input > 0:
+        parent.x_direction = 1
+    elif parent.x_input < 0:
+        parent.x_direction = -1
+        
+    #M o v e m e n t, finally
+    if parent.is_on_floor():
+        if parent.x_input == 0:
+            parent.motion.x = lerp(parent.motion.x, 0, parent.FRICTION * delta)
+        else:
+            if parent.x_input == 0:
+                parent.motion.x = lerp(parent.motion.x, 0, parent.AIR_RESISTANCE * delta)
+            
+    #smooth motion
+    parent.motion.x += parent.x_input * parent.ACCELERATION * delta * Globals.TARGET_FPS
+    #Place a maximum on x movement
+    parent.motion.x = clamp(parent.motion.x, -parent.MAX_SPEED, parent.MAX_SPEED)
+    #Determine the direction c h a d should face
+    parent.sprite.flip_h = parent.x_direction < 0
             
     if state == states.move:
-        parent.motion.x=0
-        if parent.x_input > 0:
-            parent.x_direction = 1
-        elif parent.x_input < 0:
-            parent.x_direction = -1
+        pass
 
     if state == states.idle:
         pass
@@ -86,6 +103,10 @@ func _enter_state(new_state,old_state):
             
             parent.motion.y =- parent.JUMP_FORCE
             parent.animationPlayer.play("jump")
+            
+            parent.inventory.add_item("RedFish",1)
+          
+        
         states.fall:
             parent.animationPlayer.play("fall")
             

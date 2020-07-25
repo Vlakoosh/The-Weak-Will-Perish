@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Inventory.gd"
+}, {
+"base": "Resource",
+"class": "ItemResource",
+"language": "GDScript",
+"path": "res://ItemResource.gd"
+}, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://Scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Inventory": "",
+"ItemResource": "",
 "StateMachine": ""
 }
 
@@ -27,6 +39,8 @@ config/icon="res://Art/Character/GameLogo1.png"
 [autoload]
 
 ItemDb="*res://Scripts/ItemDB.gd"
+GameManager="*res://Scripts/GameManager.gd"
+Globals="*res://Globals.gd"
 
 [display]
 
