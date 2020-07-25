@@ -17,13 +17,14 @@ func _physics_process(delta):
     #Point towards the player
     var dir = (obj.global_position - global_position).normalized()
     #Only move when on screen
-        move_and_collide(dir * speed * delta)
     if VisNotif.is_on_screen():
+        move_and_collide(dir * speed * delta)
 
 
 #Koosh why
 func _on_HurtBox_area_entered(area):
-	#queue_free()
-	if area.name=="Hitbox":
-		stats.health =- ItemDb.player_damage
-		print(stats.health)
+    stats.health - ItemDb.player_damage	
+    print("hit")
+    print(stats.health)
+    if stats.health <= 1:
+        queue_free()

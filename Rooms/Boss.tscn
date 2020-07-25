@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Tiles and Enviroment/Platform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Enemies/BatBoss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/Enemies/BatBoss.gd" type="Script" id=4]
 
 [node name="Room1" type="Node2D"]
 
@@ -38,3 +39,4 @@ position = Vector2( 184.036, 72.4211 )
 
 [node name="BatBoss" parent="." instance=ExtResource( 3 )]
 position = Vector2( 123.376, 31.9998 )
+script = ExtResource( 4 )
