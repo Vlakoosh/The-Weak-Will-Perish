@@ -9,11 +9,10 @@
 [ext_resource path="res://Scripts/Player/PlayerCombatFSM.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
-height = 2.0
+radius = 6.85784
+height = 0.403503
 
 [sub_resource type="Animation" id=2]
-resource_name = "fall"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -29,7 +28,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "idle"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -44,56 +42,31 @@ tracks/0/keys = {
 "values": [ 4, 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hitbox:visible")
+tracks/1/path = NodePath("ChadHitDown:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Hitbox:position")
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -13, 1 ), Vector2( -18, 1 ), Vector2( -23, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ChadHitIdle:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("ChadHitIdle:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -12, 1 ), Vector2( -17, 1 ), Vector2( -22, 1 ) ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "jump"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -109,7 +82,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "run"
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -126,7 +98,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "attack_down_left"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -242,7 +213,6 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "attack_down_right"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -358,7 +328,6 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-resource_name = "attack_idle_left"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -474,7 +443,6 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-resource_name = "attack_idle_left"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -594,8 +562,8 @@ radius = 6.0
 height = 2.0
 
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 19
+collision_mask = 19
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -621,7 +589,7 @@ anims/idle = SubResource( 3 )
 texture = ExtResource( 4 )
 vframes = 3
 hframes = 3
-frame = 2
+frame = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -631,25 +599,20 @@ stream = ExtResource( 5 )
 volume_db = 1.195
 
 [node name="ChadHitDown" type="Sprite" parent="."]
-visible = false
-position = Vector2( -22, 13 )
+position = Vector2( -8, 7 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 flip_h = true
 
 [node name="ChadHitIdle" type="Sprite" parent="."]
 visible = false
-position = Vector2( 22, 1 )
+position = Vector2( -22, 1 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
-position = Vector2( 23, 1 )
+position = Vector2( -13, 6 )
 collision_layer = 4
 collision_mask = 4
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 10 )
