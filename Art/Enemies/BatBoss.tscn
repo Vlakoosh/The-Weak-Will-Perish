@@ -35,7 +35,7 @@ health = 18
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]

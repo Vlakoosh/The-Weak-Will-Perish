@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var TARGET_FPS = 60
 var ACCELERATION = 80
 #The fastest our chad can go
 var MAX_SPEED = 100
@@ -25,8 +24,13 @@ onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
 onready var attackAnimationPlayer = $AttackAnimationPlayer
 
-#comment this out when not testing!
-#func _ready():
+var inventory
+
+func _ready():
+    var inventory_res = load("res://Inventory.gd")
+    inventory = inventory_res.new()
+    
+    #comment this out when not testing!
     #$Camera2D.set_zoom(Vector2(5, 5))
     #$Camera2D.current = true
 
@@ -44,25 +48,11 @@ func _handle_input():
  
 func _apply_gravity(delta):
     #Determine current up/down gravirt junk
-    motion.y += ItemDb.gravity * delta * TARGET_FPS
-        
+    motion.y += Globals.GRAVITY * delta * Globals.TARGET_FPS
+    
+    
 func _apply_movement(delta):
-    #M o v e m e n t, finally
-    
-    if is_on_floor():
-        if x_input == 0:
-            motion.x = lerp(motion.x, 0, FRICTION * delta)
-        else:
-            if x_input == 0:
-                motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
-            
-    #smooth motion
-    motion.x += x_input * ACCELERATION * delta * TARGET_FPS
-    #Place a maximum on x movement
-    motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
-    #Determine the direction c h a d should face
-    sprite.flip_h = x_direction < 0
-    
+        
     motion = move_and_slide(motion, Vector2.UP)
 
 
