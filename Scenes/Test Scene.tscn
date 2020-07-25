@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Test Scene.gd" type="Script" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://[8-Bit] Ensiferum - In My Sword I Trust.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/UI/DebugPanel.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/PIXELITE.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Art/Hud/InventorySlot.png" type="Texture" id=7]
+[ext_resource path="res://Art/Items/RedFish.png" type="Texture" id=8]
+[ext_resource path="res://Art/Items/DirtyLeatherShirt.png" type="Texture" id=9]
+[ext_resource path="res://Art/Enemies/BatEnemy2.png" type="Texture" id=10]
+[ext_resource path="res://Art/Hud/InventorySlotSelected.png" type="Texture" id=11]
 
 [node name="Test Scene" type="Node2D"]
 script = ExtResource( 2 )
@@ -31,13 +36,16 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.111374
+margin_right = 0.111374
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DebugPanel" type="Panel" parent="CanvasLayer/UI"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.376471 )
 margin_right = 112.0
 margin_bottom = 60.0
@@ -52,6 +60,171 @@ anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Inventory" type="Control" parent="CanvasLayer/UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -120.0
+margin_right = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/Inventory"]
+anchor_right = 1.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 120, 0 )
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer"]
+margin_left = 90.0
+margin_right = 110.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+
+[node name="Item1Texture" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 8 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selection" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Slot1Label" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+custom_fonts/font = ExtResource( 6 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1Quantity" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -19.0
+margin_top = -4.0
+margin_right = -2.0
+custom_fonts/font = ExtResource( 6 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer"]
+margin_left = 110.0
+margin_right = 130.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+
+[node name="Item2Texture" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 9 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Slot2Label" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+custom_fonts/font = ExtResource( 6 )
+text = "2"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2Quantity" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -19.0
+margin_top = -4.0
+margin_right = -2.0
+custom_fonts/font = ExtResource( 6 )
+text = "3"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Slot3" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer"]
+margin_left = 130.0
+margin_right = 150.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+
+[node name="Item3Texture" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Slot3Label" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+custom_fonts/font = ExtResource( 6 )
+text = "3"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Slot3Quantity" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -19.0
+margin_top = -4.0
+margin_right = -2.0
+custom_fonts/font = ExtResource( 6 )
+text = "666"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 [connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]
 [connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
