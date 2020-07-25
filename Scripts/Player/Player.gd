@@ -27,8 +27,9 @@ onready var attackAnimationPlayer = $AttackAnimationPlayer
 var inventory
 
 func _ready():
-    var inventory_res = load("res://Inventory.gd")
+    var inventory_res = load("res://Scripts/Inventory.gd")
     inventory = inventory_res.new()
+    inventory.set_max_slots(3)
     
     #comment this out when not testing!
     #$Camera2D.set_zoom(Vector2(5, 5))

@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
-"path": "res://Inventory.gd"
+"path": "res://Scripts/Inventory.gd"
 }, {
 "base": "Resource",
 "class": "ItemResource",
 "language": "GDScript",
-"path": "res://ItemResource.gd"
+"path": "res://Scripts/ItemResource.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
@@ -40,7 +40,7 @@ config/icon="res://Art/Character/GameLogo1.png"
 
 ItemDb="*res://Scripts/ItemDB.gd"
 GameManager="*res://Scripts/GameManager.gd"
-Globals="*res://Globals.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 
@@ -82,6 +82,16 @@ exit={
 inv_grab={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+ui_inventory_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_inventory_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
  ]
 }
 
