@@ -9,16 +9,16 @@ var speed = 50
 onready var obj = GameManager.player
 
 func _physics_process(delta):
-    
-    if not obj or not VisNotif.is_on_screen():
-        obj = GameManager.player
-        return
-        
-    #Point towards the player
-    var dir = (obj.global_position - global_position).normalized()
-    #Only move when on screen
-        move_and_collide(dir * speed * delta)
-    if VisNotif.is_on_screen():
+	
+	if not obj or not VisNotif.is_on_screen():
+		obj = GameManager.player
+		return
+		
+	#Point towards the player
+	var dir = (obj.global_position - global_position).normalized()
+	#Only move when on screen
+	if VisNotif.is_on_screen():
+		move_and_collide(dir * speed * delta)
 
 
 #Koosh why

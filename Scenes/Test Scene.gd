@@ -14,9 +14,9 @@ var sceneArray = []
 var currentLevel = 0
 
 func _ready():
-    #Make a new seed
-    randomize()
-    #loop 52+ times to fill the array with levels
+	#Make a new seed
+	randomize()
+	#loop 52+ times to fill the array with levels
 
 	for y in range(52):
 		#I hate this
@@ -34,30 +34,30 @@ func _ready():
 			#otherwise, load the boss room on multiples of 10
 			_:
 				scene = ItemDb.preloaded_rooms[2].instance() if (y%10==0 && y!=1) else ItemDb.preloaded_rooms[x].instance()
-		#appends the given scene (see above) to the array
-		sceneArray.append(scene)
+			#appends the given scene (see above) to the array
+				sceneArray.append(scene)
 	for y in range(52):
 		nextLevel()
 
 func nextLevel():
-    #grab from the scene array and modify the global position to be equal to 'location' variable
-    sceneArray[currentLevel].position = location
-    #increase the x-value of the location variable
-    location.x += 240
-    #add the new room to the Level node
-    Level.add_child(sceneArray[currentLevel])
-    #index of the current level lol
-    currentLevel+=1
-    
-        
+	#grab from the scene array and modify the global position to be equal to 'location' variable
+	sceneArray[currentLevel].position = location
+	#increase the x-value of the location variable
+	location.x += 240
+	#add the new room to the Level node
+	Level.add_child(sceneArray[currentLevel])
+	#index of the current level lol
+	currentLevel+=1
+	
+		
 
 func _on_Next_Room_nextLevel():
-    #Move camera to next room
-    $Camera2D.position.x+=240
-    #Wait 1.5 seconds
-    yield(get_tree().create_timer(1.5), "timeout")
-    #delete the last room
-    delete_children(Level)
-    
+	#Move camera to next room
+	$Camera2D.position.x+=240
+	#Wait 1.5 seconds
+	yield(get_tree().create_timer(1.5), "timeout")
+	#delete the last room
+	delete_children(Level)
+	
 static func delete_children(node):
 	node.get_child(0).queue_free()

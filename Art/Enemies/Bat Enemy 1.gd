@@ -12,12 +12,12 @@ export var speed = 50
 onready var obj = GameManager.player
 
 func _physics_process(delta):
-    if not obj or not VisNotif.is_on_screen():
-        obj = GameManager.player
-        return
-    
-    #Point towards the player
-    var dir = (obj.global_position - global_position).normalized()
+	if not obj or not VisNotif.is_on_screen():
+		obj = GameManager.player
+		return
+	
+	#Point towards the player
+	var dir = (obj.global_position - global_position).normalized()
 	#Only move when on screen/When in player radius (onscreen / idle modes)
 	if VisNotif.is_on_screen() && !mode:
 		move_and_collide(dir * speed * delta)
@@ -26,7 +26,6 @@ func _physics_process(delta):
 	#Die
 	if stats.health <= 0:
 		queue_free()
-        
 
 #Koosh why
 func _on_HurtBox_area_entered(area):
