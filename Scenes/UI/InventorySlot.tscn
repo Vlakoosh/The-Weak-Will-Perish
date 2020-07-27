@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Art/Hud/InventorySlotWeapon.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/UI/InventorySlot.gd" type="Script" id=3]
+[ext_resource path="res://Art/Hud/InventorySlotSelected.png" type="Texture" id=5]
+[ext_resource path="res://Art/Hud/InventorySlotAcessory.png" type="Texture" id=6]
+[ext_resource path="res://Art/Hud/InventorySlotArmor.png" type="Texture" id=7]
+[ext_resource path="res://Art/Hud/InventorySlot.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 4
+outline_size = 1
+outline_color = Color( 0.184314, 0.172549, 0.278431, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 5
+outline_size = 1
+outline_color = Color( 0.184314, 0.172549, 0.278431, 1 )
+font_data = ExtResource( 1 )
+
+[node name="InventorySlot" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -220.0
+margin_bottom = -140.0
+rect_min_size = Vector2( 20, 20 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+basicType_icon = ExtResource( 8 )
+weaponType_icon = ExtResource( 2 )
+armorType_icon = ExtResource( 7 )
+accessoryType_icon = ExtResource( 6 )
+
+[node name="Icon" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 10, 10 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selection" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Quantity" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -19.0
+margin_top = -4.0
+margin_right = -2.0
+margin_bottom = 2.0
+custom_fonts/font = SubResource( 2 )
+align = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

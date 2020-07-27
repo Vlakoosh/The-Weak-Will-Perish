@@ -1,19 +1,18 @@
 extends Resource
 class_name ItemResource
 
-enum ItemType{
+enum Type{
     NONE,
     GENERIC,
     CONSUMABLE,
-    EQUIPMENT,
-    WEAPON
+    EQUIPMENT
 }
 enum EquipmentType{
     NONE,
-    SWORD,
-    ARMOR    
+    WEAPON,
+    ARMOR,
+    ACESSORY
 }
-
 
 # Basic Properties
 export var id:String
@@ -23,7 +22,7 @@ export var stackable:bool = false
 export var max_stack_size:int = 1
 export var icon : Texture
 
-export(ItemType) var type
+export(Type) var type
 export(EquipmentType) var equip_type
 
 # Advanced Properties

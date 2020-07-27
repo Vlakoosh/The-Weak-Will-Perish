@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Test Scene.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://[8-Bit] Ensiferum - In My Sword I Trust.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/UI/DebugPanel.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/PIXELITE.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scripts/UI/InventoryUI.gd" type="Script" id=13]
 
 [node name="Test Scene" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,18 +27,22 @@ collision_mask = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -40.0
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.111374
+margin_right = 0.111374
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DebugPanel" type="Panel" parent="CanvasLayer/UI"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.376471 )
 margin_right = 112.0
 margin_bottom = 60.0
@@ -53,5 +58,26 @@ custom_fonts/font = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]
+
+[node name="Inventory" type="Control" parent="CanvasLayer/UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -120.0
+margin_right = 120.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slots" type="HBoxContainer" parent="CanvasLayer/UI/Inventory"]
+anchor_right = 1.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+rect_pivot_offset = Vector2( 120, 0 )
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
+[connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]

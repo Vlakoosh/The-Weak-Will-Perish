@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://ItemResource.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ItemResource.gd" type="Script" id=1]
 [ext_resource path="res://Art/Items/DirtyLeatherShirt.png" type="Texture" id=2]
 
 [resource]
@@ -13,3 +13,7 @@ max_stack_size = 1
 icon = ExtResource( 2 )
 type = 3
 equip_type = 2
+damage = 0.0
+defense = 0.0
+onUse_consume = false
+onUse_heal = 0.0

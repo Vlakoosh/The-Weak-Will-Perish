@@ -104,8 +104,8 @@ func _enter_state(new_state,old_state):
             parent.motion.y =- parent.JUMP_FORCE
             parent.animationPlayer.play("jump")
             
-            parent.inventory.add_item("RedFish",1)
-          
+            var q =parent.inventory.add_item("RedFish",1)
+            print("Inventory Full!") if q>0 else null
         
         states.fall:
             parent.animationPlayer.play("fall")
