@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Test Scene.gd" type="Script" id=2]
@@ -6,36 +6,7 @@
 [ext_resource path="res://[8-Bit] Ensiferum - In My Sword I Trust.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/UI/DebugPanel.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/PIXELITE.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Art/Hud/InventorySlotWeapon.png" type="Texture" id=7]
-[ext_resource path="res://Art/Hud/InventorySlotArmor.png" type="Texture" id=8]
-[ext_resource path="res://Art/Hud/InventorySlotAcessory.png" type="Texture" id=9]
-[ext_resource path="res://Art/Hud/InventorySlotSelected.png" type="Texture" id=11]
-[ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://Scripts/UI/InventoryUI.gd" type="Script" id=13]
-
-[sub_resource type="DynamicFont" id=1]
-size = 5
-outline_size = 1
-outline_color = Color( 0.184314, 0.172549, 0.278431, 1 )
-font_data = ExtResource( 12 )
-
-[sub_resource type="StreamTexture" id=4]
-load_path = "res://.import/InventorySlotSelected.png-42cc6a5f7ce27d0a76f5486869fb0658.stex"
-
-[sub_resource type="DynamicFont" id=2]
-size = 5
-outline_size = 1
-outline_color = Color( 0.184314, 0.172549, 0.278431, 1 )
-font_data = ExtResource( 12 )
-
-[sub_resource type="StreamTexture" id=5]
-load_path = "res://.import/InventorySlotSelected.png-42cc6a5f7ce27d0a76f5486869fb0658.stex"
-
-[sub_resource type="DynamicFont" id=3]
-size = 5
-outline_size = 1
-outline_color = Color( 0.184314, 0.172549, 0.278431, 1 )
-font_data = ExtResource( 12 )
 
 [node name="Test Scene" type="Node2D"]
 script = ExtResource( 2 )
@@ -56,6 +27,7 @@ collision_mask = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -40.0
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -97,175 +69,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/Inventory"]
+[node name="Slots" type="HBoxContainer" parent="CanvasLayer/UI/Inventory"]
 anchor_right = 1.0
 margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
 rect_pivot_offset = Vector2( 120, 0 )
 custom_constants/separation = 0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Slot1" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer"]
-margin_left = 90.0
-margin_right = 110.0
-margin_bottom = 20.0
-texture = ExtResource( 7 )
-
-[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_scale = Vector2( 0.8, 0.8 )
-rect_pivot_offset = Vector2( 10, 10 )
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Selection" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Number" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 1.0
-custom_fonts/font = ExtResource( 6 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Quantity" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot1"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -19.0
-margin_top = -4.0
-margin_right = -2.0
-custom_fonts/font = SubResource( 1 )
-align = 2
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Slot2" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer"]
-margin_left = 110.0
-margin_right = 130.0
-margin_bottom = 20.0
-texture = ExtResource( 8 )
-
-[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_scale = Vector2( 0.8, 0.8 )
-rect_pivot_offset = Vector2( 10, 10 )
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Selection" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Number" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 1.0
-custom_fonts/font = ExtResource( 6 )
-text = "2"
-align = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Quantity" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot2"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -19.0
-margin_top = -4.0
-margin_right = -2.0
-custom_fonts/font = SubResource( 2 )
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Slot3" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer"]
-margin_left = 130.0
-margin_right = 150.0
-margin_bottom = 20.0
-texture = ExtResource( 9 )
-
-[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_scale = Vector2( 0.8, 0.8 )
-rect_pivot_offset = Vector2( 10, 10 )
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Selection" type="TextureRect" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Number" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 1.0
-custom_fonts/font = ExtResource( 6 )
-text = "3"
-align = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Quantity" type="Label" parent="CanvasLayer/UI/Inventory/HBoxContainer/Slot3"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -19.0
-margin_top = -4.0
-margin_right = -2.0
-custom_fonts/font = SubResource( 3 )
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-[connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]
 [connection signal="nextLevel" from="Next Room" to="Player" method="_on_Next_Room_nextLevel"]
+[connection signal="nextLevel" from="Next Room" to="." method="_on_Next_Room_nextLevel"]

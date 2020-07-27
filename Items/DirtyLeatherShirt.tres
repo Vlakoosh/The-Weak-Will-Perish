@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/ItemResource.gd" type="Script" id=1]
 [ext_resource path="res://Art/Items/DirtyLeatherShirt.png" type="Texture" id=2]
 
-
 [resource]
 script = ExtResource( 1 )
 id = "DirtyLeatherShirt"

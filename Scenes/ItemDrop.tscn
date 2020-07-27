@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/FreePixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/ItemDrop.gd" type="Script" id=2]
+[ext_resource path="res://Art/Items/DirtyLeatherShirt.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 5
+outline_size = 1
+outline_color = Color( 0.184314, 0.172549, 0.278431, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Shimmer"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+
+[node name="ItemDrop" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="DropArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Name" type="Label" parent="."]
+visible = false
+margin_left = -19.8526
+margin_top = -28.2805
+margin_right = 20.1474
+margin_bottom = -14.2805
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Shimmer"
+anims/Shimmer = SubResource( 3 )
+[connection signal="body_entered" from="DropArea" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DropArea" to="." method="_on_Area2D_body_exited"]
